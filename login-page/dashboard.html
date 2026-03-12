@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Affairs Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <i class="fa-solid fa-globe text-primary"></i>
+            <span>Daily Insights</span>
+        </div>
+        <div class="nav-user">
+            <span id="userEmail" class="user-email">Loading...</span>
+            <button id="logoutBtn" class="btn-logout">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+            </button>
+        </div>
+    </nav>
+
+    <main class="dashboard-container">
+        <header class="dashboard-header">
+            <h1>Today's Current Affairs</h1>
+            <p>Your curated briefing on global events, technology, and culture.</p>
+        </header>
+
+        <div class="news-grid">
+            <!-- Featured Article -->
+            <article class="news-card featured">
+                <div class="card-image bg-tech">
+                    <span class="category-badge">Technology</span>
+                </div>
+                <div class="card-content">
+                    <div class="meta">
+                        <span class="date"><i class="fa-regular fa-clock"></i> 2 hours ago</span>
+                        <span class="read-time"><i class="fa-solid fa-book-open"></i> 5 min read</span>
+                    </div>
+                    <h2>The Next Generation of AI: Exploring Multi-modal Reasoning Models</h2>
+                    <p>Recent breakthroughs in artificial intelligence show that models combining text, audio, and visual processing are demonstrating unprecedented reasoning capabilities across domains previously thought impossible for machines.</p>
+                    <a href="#" class="read-more">Read full story <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <!-- Standard Articles -->
+            <article class="news-card">
+                <div class="card-image bg-finance">
+                    <span class="category-badge">Economy</span>
+                </div>
+                <div class="card-content">
+                    <div class="meta">
+                        <span class="date">4 hours ago</span>
+                    </div>
+                    <h3>Global Markets Rally Behind Renewable Energy Shift</h3>
+                    <p>Investors pour record capital into green infrastructure projects as new climate policies take effect globally.</p>
+                    <a href="#" class="read-more">Read more</a>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <div class="card-image bg-science">
+                    <span class="category-badge">Science</span>
+                </div>
+                <div class="card-content">
+                    <div class="meta">
+                        <span class="date">6 hours ago</span>
+                    </div>
+                    <h3>New Discoveries in Deep Space Observation</h3>
+                    <p>The latest telescope arrays have captured unprecedented images of star formations in neighboring galaxies.</p>
+                    <a href="#" class="read-more">Read more</a>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <div class="card-image bg-health">
+                    <span class="category-badge">Health</span>
+                </div>
+                <div class="card-content">
+                    <div class="meta">
+                        <span class="date">8 hours ago</span>
+                    </div>
+                    <h3>Breakthrough in Personalized Medicine</h3>
+                    <p>Researchers report significant success rates using mRNA technology for individual targeted therapies.</p>
+                    <a href="#" class="read-more">Read more</a>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check if user is logged in
+            const user = JSON.parse(localStorage.getItem('user'));
+            
+            if (!user) {
+                // If no user is found, redirect back to login
+                window.location.href = 'index.html';
+                return;
+            }
+
+            // Display user email
+            document.getElementById('userEmail').textContent = user.email;
+
+            // Handle logout
+            document.getElementById('logoutBtn').addEventListener('click', () => {
+                localStorage.removeItem('user');
+                window.location.href = 'index.html';
+            });
+        });
+    </script>
+</body>
+</html>
